@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CasImportaciones.Core.Domain.Ordencompra>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProveedorNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuarioNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReferenciaNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProveedorNavigation.IdProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuarioNavigation.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferenciaNavigation.Referencia)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCompra">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCompra">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCompra">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
